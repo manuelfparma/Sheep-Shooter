@@ -5,6 +5,8 @@ using UnityEngine;
 public class Sheep : MonoBehaviour
 {
     // movement
+    private Vector3 direction;
+    private bool directionChanged = false;
     public float runSpeed;
     public float gotHayDestroyDelay;
     private bool hitByHay;
@@ -20,12 +22,13 @@ public class Sheep : MonoBehaviour
     {
         myCollider = GetComponent<Collider>();
         myRigidbody = GetComponent<Rigidbody>();
+        direction = Vector3.forward;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * runSpeed * Time.deltaTime);
+        transform.Translate(direction * runSpeed * Time.deltaTime);
     }
 
     private void HitByHay() {
@@ -53,6 +56,18 @@ public class Sheep : MonoBehaviour
 
     public void SetSpawner(SheepSpawner spawner) {
         sheepSpawner = spawner;
+    }
+
+    public void ChangeDirection(List<Transform> sheepEndPoints) {
+        // change direction only once
+        if (directionChanged) return;
+        // choose one random end point to direct to
+        Vector3 randomPoint = sheepEndPoints[Random.Range(0, sheepEndPoints.Count)].position;
+        // find the new walking direction
+        direction = transform.position - randomPoint;
+        direction.Normalize();
+        // activate flag
+        directionChanged = true;
     }
 
 }

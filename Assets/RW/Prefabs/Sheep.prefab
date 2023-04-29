@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8894213201919641542}
   m_Layer: 0
   m_Name: Sheep
-  m_TagString: Untagged
+  m_TagString: Sheep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +77,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 10
-  gotHayDestroyDelay: 1
+  gotHayDestroyDelay: 0.1
+  sheepEndPoints: []
   dropDestroyerDelay: 4
 --- !u!1001 &8894213201579458090
 PrefabInstance:
