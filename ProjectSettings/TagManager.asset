@@ -7,6 +7,8 @@ TagManager:
   - DestroyHay
   - DropSheep
   - Hay
+  - ChangeDirection
+  - Sheep
   layers:
   - Default
   - TransparentFX
